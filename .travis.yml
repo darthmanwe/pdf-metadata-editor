@@ -1,0 +1,25 @@
+language: shell
+
+os:
+  - osx
+
+
+script:
+  - source .travis/java.sh
+  - .travis/jdde.sh
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+after_success:
+  - ls -lah target/packages/ target/bundles/
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file_glob: true
+  file:
+    - target/packages/*
+    - target/bundles/*
+  skip_cleanup: true
+  draft: true
+  on:
+    branch: travis-ci
