@@ -2,8 +2,7 @@ language: shell
 
 os:
   - osx
-osx_image: xcode9.3
-
+  
 script:
   - source .travis/java.sh
   - .travis/jdde.sh
