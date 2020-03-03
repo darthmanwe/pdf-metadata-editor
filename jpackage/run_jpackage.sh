@@ -41,6 +41,7 @@ set -x
 exec jpackage \
   --type \
   $TYPE \
+  --runtime-image ${STAGING_DIR}/preparedJDK/ \
   --input ${STAGING_DIR}/jpackage \
   --name "$APP_NAME" \
   --main-class "$MAIN_CLASS" \
